@@ -27,7 +27,7 @@ const filter = filterStore()
 let valueInput = defineModel("input");
 
 const handleToDoAdd = () => {
-  filter.listData.push({
+  filter?.listData.push({
     text: valueInput.value,
     completed: false,
     id: Date.now() + Math.random(),

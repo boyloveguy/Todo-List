@@ -3,9 +3,9 @@
     <ul class="task__container full-block flex-box">
       <li
         class="task flex-box--center-y"
-        v-for="(task, index) in filter.typeFilter == 'all'
+        v-for="(task, index) in filter.typeFilter === 'all'
           ? filter.listData
-          : filter.typeFilter == 'completed'
+          : filter.typeFilter === 'completed'
           ? completeData()
           : unCompleteData()"
         :key="index"
@@ -41,6 +41,8 @@ import { filterStore } from '@/stores/filter';
 const filter = filterStore()
 
 filter.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
+
+console.log(filter)
 
 const completeData = () => {
   filter.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
