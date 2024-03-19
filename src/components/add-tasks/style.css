@@ -1,0 +1,37 @@
+.todo__control-add {
+    background-color: white;
+    height: 53px;
+    width: 450px;
+}
+
+.input {
+    padding: 0 10px;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.add-todo__button {
+    height: 100%;
+    width: 10%;
+    padding: 8px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.add-todo__button:hover {
+    background-color: var(--primary-color-btn);
+}
+
+.add-todo__button:hover .add-todo__icon {
+    color: white;
+}
+
+.add-todo__icon {
+    color: var(--primary-color-btn);
+}
+
+@media only screen and (max-width: 700px) {
+    .todo__control-add{
+      width: 90%;
+    }
+  }

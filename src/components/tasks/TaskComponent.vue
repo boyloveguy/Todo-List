@@ -42,6 +42,7 @@ const filter = filterStore()
 
 filter.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
 
+// Handle filter completed tasks
 const completeData = () => {
   filter.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
   return toRaw(filter.listData).filter((data) => {
@@ -51,6 +52,7 @@ const completeData = () => {
   });
 };
 
+// Handle filter uncompleted tasks
 const unCompleteData = () => {
   filter.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
   return toRaw(filter.listData).filter((data) => {
@@ -60,6 +62,7 @@ const unCompleteData = () => {
   });
 };
 
+// Handle make completed and uncompleted tasks
 const completedTask = (id) => {
   filter.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
   filter.listData.map((item) => {
@@ -70,6 +73,7 @@ const completedTask = (id) => {
   });
 };
 
+// Handle remove tasks
 const removeTask = (id) => {
   filter.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
   filter.listData = filter.listData.filter((item) => {
@@ -81,47 +85,5 @@ const removeTask = (id) => {
 };
 </script>
 
-<style scoped>
-.task__container {
-  width: 50%;
-  gap: 10px;
-  flex-direction: column;
-}
-
-.task {
-  width: 100%;
-  height: 53px;
-  background-color: white;
-  justify-content: space-between;
-}
-
-.task__content {
-  padding: 0 0.5rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  font-size: 1.5rem;
-}
-
-.icon {
-  color: white;
-}
-
-.check-icon {
-  background-color: #0bd4a2;
-  height: 53px;
-  width: 53px;
-  border: none
-}
-
-.trash-icon {
-  background-color: var(--primary-color-btn);
-  height: 53px;
-  width: 53px;
-  border: none
-}
-
-.completed-task {
-  text-decoration: line-through;
-  color: gray;
-}
+<style src="./style.css" scoped>
 </style>

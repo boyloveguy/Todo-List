@@ -27,12 +27,22 @@ header {
   color: white;
 }
 
-.control{
+.control {
   height: 20vh;
 }
 
 .control__container {
   width: 800px;
   gap: 40px;
+}
+
+@media only screen and (max-width: 700px) {
+  .control__container {
+    flex-direction: column;
+  }
+
+  h1{
+    font-size: 4rem;
+  }
 }
 </style>

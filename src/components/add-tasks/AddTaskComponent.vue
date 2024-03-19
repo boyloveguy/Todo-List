@@ -26,18 +26,25 @@ const filter = filterStore();
 
 let valueInput = defineModel("input");
 
+
+// Handle add tasks
 const handleToDoAdd = () => {
+  // Handle validate blank
   if (valueInput.value === undefined || valueInput.value === "") {
     return false;
   }
+
+  // Handle add localStorage
   if (toRaw(filter.listData)) {
-    localStorage.setItem("tasks", JSON.stringify([]));
     toRaw(filter.listData).push({
       text: valueInput.value,
       completed: false,
       id: Date.now() + Math.random(),
     });
   } else {
+    localStorage.setItem("tasks", JSON.stringify([]));
+    filter.listData = JSON.parse(localStorage.getItem("tasks"));
+
     toRaw(filter.listData).push({
       text: valueInput.value,
       completed: false,
@@ -50,36 +57,4 @@ const handleToDoAdd = () => {
 };
 </script>
 
-<style scoped>
-.todo__control-add {
-  background-color: white;
-  height: 53px;
-  width: 450px;
-}
-
-.input {
-  padding: 0 10px;
-  font-size: 2rem;
-  font-weight: 500;
-}
-
-.add-todo__button {
-  height: 100%;
-  width: 10%;
-  padding: 8px;
-  cursor: pointer;
-  transition: 0.4s;
-}
-
-.add-todo__button:hover {
-  background-color: var(--primary-color-btn);
-}
-
-.add-todo__button:hover .add-todo__icon {
-  color: white;
-}
-
-.add-todo__icon {
-  color: var(--primary-color-btn);
-}
-</style>
+<style src="./style.css" scoped></style>
