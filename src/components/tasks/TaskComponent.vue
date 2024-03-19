@@ -3,9 +3,9 @@
     <ul class="task__container full-block flex-box">
       <li
         class="task flex-box--center-y"
-        v-for="(task, index) in store.filter == 'all'
-          ? store.listData
-          : store.filter == 'completed'
+        v-for="(task, index) in filter.typeFilter == 'all'
+          ? filter.listData
+          : filter.typeFilter == 'completed'
           ? completeData()
           : unCompleteData()"
         :key="index"
@@ -36,13 +36,15 @@
 
 <script setup>
 import { reactive, toRaw } from "vue";
-import { store } from "@/store.js";
+import { filterStore } from '@/stores/filter';
 
-store.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
+const filter = filterStore()
+
+filter.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
 
 const completeData = () => {
-  store.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
-  return toRaw(store.listData).filter((data) => {
+  filter.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
+  return toRaw(filter.listData).filter((data) => {
     if (toRaw(data).completed === true) {
       return data;
     }
@@ -50,8 +52,8 @@ const completeData = () => {
 };
 
 const unCompleteData = () => {
-  store.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
-  return toRaw(store.listData).filter((data) => {
+  filter.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
+  return toRaw(filter.listData).filter((data) => {
     if (toRaw(data).completed === false) {
       return data;
     }
@@ -59,23 +61,23 @@ const unCompleteData = () => {
 };
 
 const completedTask = (id) => {
-  store.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
-  store.listData.map((item) => {
+  filter.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
+  filter.listData.map((item) => {
     if (item.id === id) {
       item.completed = !item.completed;
-      localStorage.setItem("tasks", JSON.stringify(toRaw(store.listData)));
+      localStorage.setItem("tasks", JSON.stringify(toRaw(filter.listData)));
     }
   });
 };
 
 const removeTask = (id) => {
-  store.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
-  store.listData = store.listData.filter((item) => {
+  filter.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
+  filter.listData = filter.listData.filter((item) => {
     if (item.id !== id) {
       return item;
     }
   });
-  localStorage.setItem("tasks", JSON.stringify(toRaw(store.listData)));
+  localStorage.setItem("tasks", JSON.stringify(toRaw(filter.listData)));
 };
 </script>
 

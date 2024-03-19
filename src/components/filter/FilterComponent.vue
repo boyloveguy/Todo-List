@@ -10,12 +10,14 @@
 
 <script setup>
 import { ref } from "vue";
-import { store } from "@/store.js";
+import { filterStore } from '@/stores/filter'
+
+const filter = filterStore()
 
 const typeFilter = ref("all");
 
-store.filter = typeFilter;
-store.listData = JSON.parse(localStorage.getItem("tasks"))
+filter.filter(typeFilter)
+filter.listData = JSON.parse(localStorage.getItem("tasks"))
 </script>
 
 <style scoped>
