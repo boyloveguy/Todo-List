@@ -42,8 +42,6 @@ const filter = filterStore()
 
 filter.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
 
-console.log(filter)
-
 const completeData = () => {
   filter.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
   return toRaw(filter.listData).filter((data) => {
@@ -99,6 +97,8 @@ const removeTask = (id) => {
 
 .task__content {
   padding: 0 0.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .icon {

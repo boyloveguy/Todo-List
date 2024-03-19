@@ -22,12 +22,17 @@
 import { defineModel, toRaw, reactive } from "vue";
 import { filterStore } from '@/stores/filter';
 
-const filter = filterStore()
+const filter = filterStore();
 
 let valueInput = defineModel("input");
 
+localStorage.setItem("tasks", JSON.stringify([]))
+
 const handleToDoAdd = () => {
-  filter?.listData.push({
+  if(valueInput.value === undefined || valueInput.value === ''){
+    return false
+  }
+  toRaw(filter.listData).push({
     text: valueInput.value,
     completed: false,
     id: Date.now() + Math.random(),

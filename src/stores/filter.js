@@ -14,5 +14,6 @@ export const filterStore = defineStore('filter', {
     filter(type) {
       this.typeFilter = type;
     },
+    
   },
 })
