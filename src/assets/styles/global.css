@@ -1,0 +1,108 @@
+:root {
+    --primary-color-btn: #ff6f47;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    overflow: hidden;
+}
+
+body{
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #0093e9;
+    background-image: linear-gradient(160deg, #0093e9, #80d0c7);
+}
+
+section {
+    height: 100%;
+}
+
+button {
+    cursor: pointer;
+}
+
+.full-block{
+    width: 100%;
+    height: 100%;
+}
+
+.flex-box {
+    display: flex;
+}
+
+.flex-box--center-x {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-box--center-y {
+    display: flex;
+    align-items: center;
+}
+
+.flex-box--center-x-y {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-box--center-x-y-direction {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
