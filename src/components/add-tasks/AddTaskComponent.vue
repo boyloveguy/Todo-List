@@ -20,23 +20,30 @@
 
 <script setup>
 import { defineModel, toRaw, reactive } from "vue";
-import { filterStore } from '@/stores/filter';
+import { filterStore } from "@/stores/filter";
 
 const filter = filterStore();
 
 let valueInput = defineModel("input");
 
-localStorage.setItem("tasks", JSON.stringify([]))
-
 const handleToDoAdd = () => {
-  if(valueInput.value === undefined || valueInput.value === ''){
-    return false
+  if (valueInput.value === undefined || valueInput.value === "") {
+    return false;
   }
-  toRaw(filter.listData).push({
-    text: valueInput.value,
-    completed: false,
-    id: Date.now() + Math.random(),
-  });
+  if (toRaw(filter.listData)) {
+    localStorage.setItem("tasks", JSON.stringify([]));
+    toRaw(filter.listData).push({
+      text: valueInput.value,
+      completed: false,
+      id: Date.now() + Math.random(),
+    });
+  } else {
+    toRaw(filter.listData).push({
+      text: valueInput.value,
+      completed: false,
+      id: Date.now() + Math.random(),
+    });
+  }
   localStorage.setItem("tasks", JSON.stringify(toRaw(filter.listData)));
   filter.listData = reactive(JSON.parse(localStorage.getItem("tasks")));
   valueInput.value = "";

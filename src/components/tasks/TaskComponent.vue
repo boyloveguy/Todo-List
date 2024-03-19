@@ -99,6 +99,7 @@ const removeTask = (id) => {
   padding: 0 0.5rem;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 1.5rem;
 }
 
 .icon {
@@ -109,12 +110,14 @@ const removeTask = (id) => {
   background-color: #0bd4a2;
   height: 53px;
   width: 53px;
+  border: none
 }
 
 .trash-icon {
   background-color: var(--primary-color-btn);
   height: 53px;
   width: 53px;
+  border: none
 }
 
 .completed-task {
